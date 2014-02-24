@@ -1,6 +1,10 @@
 GiftGuide::Application.routes.draw do
   resources :gifts
 
+  get 'mygifts', to: 'gifts#index'
+
+  root to: 'gifts:index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
