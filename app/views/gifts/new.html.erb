@@ -2,17 +2,17 @@
 
 <%= form_for @gift do |form| %>
 
-<%= form.label :title, "Item" %>
-<%= form.text_field :title %>
+<%= form.label :item, "Item" %>
+<%= form.text_field :item %>
 <br>
-<%= form.label :description %>
-<%= form.text_area :description %>
+<%= form.label :name, "Description" %>
+<%= form.text_area :name %>
 <br>
 <%= form.label :price %>
-<%= form.text_field :price %>
+<%= form.number_field :price, step: 0.01 %>
 <br>
 <%= form.label :url %>
-<%= form.url_field(:user, :homepage) %>
+<%= form.url_field :url %>
 <br>
 <%= form.submit "Add Item" %>
 
