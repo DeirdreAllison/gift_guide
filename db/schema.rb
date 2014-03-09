@@ -11,15 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224015932) do
+ActiveRecord::Schema.define(version: 20140309182408) do
+
+  create_table "follows", force: true do |t|
+    t.integer  "followable_id",                   null: false
+    t.string   "followable_type",                 null: false
+    t.integer  "follower_id",                     null: false
+    t.string   "follower_type",                   null: false
+    t.boolean  "blocked",         default: false, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], name: "fk_followables"
+  add_index "follows", ["follower_id", "follower_type"], name: "fk_follows"
 
   create_table "gifts", force: true do |t|
     t.string   "url"
-    t.integer  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "item"
     t.text     "name"
+    t.decimal  "price"
   end
 
   create_table "people", force: true do |t|
